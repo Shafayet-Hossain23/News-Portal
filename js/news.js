@@ -96,6 +96,15 @@ const displayModal = (news) => {
     `
 
 }
+const spinLoader = (isLoading) => {
+    const callLoader = document.getElementById('loader');
+    if (isLoading) {
+        callLoader.classList.remove('d-none');
+    }
+    else {
+        callLoader.classList.add('d-none');
+    }
+}
 
 
 
