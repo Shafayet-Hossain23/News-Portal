@@ -35,11 +35,13 @@ const displayItemFound = (categories, categoryName) => {
     const callNewsContainer = document.getElementById('news-container');
     callNewsContainer.innerHTML = '';
     categories.forEach(categoryTitle => {
-        console.log(categoryTitle);
+        // console.log(categoryTitle);
         const createDiv = document.createElement('div');
         createDiv.classList.add('row', 'g-0', 'my-5', 'bg-white', 'rounded-4');
+        // createDiv.setAttribute("onclick", `clickModalOpen('${categoryTitle._id}');`);
         createDiv.innerHTML = `
-        <div class="col-md-4" onclick="clickModalOpen()">
+        
+        <div class="col-md-4">
             <img style="width:350px;" src="${categoryTitle.thumbnail_url}" class="img-fluid rounded p-2">
         </div>
         <div class="col-md-8">
@@ -56,11 +58,11 @@ const displayItemFound = (categories, categoryName) => {
                         </div>
                     </div>
                     <div>
-                        <p class="fw-normal"> <i class="fa-solid fa-eye">  ${categoryTitle.total_view ? categoryTitle.total_view : 'No data found'}</i></p>
+                        <p class="fw-normal"> <i class="fa-solid fa-eye"> </i>  ${categoryTitle.total_view ? categoryTitle.total_view : 'No data found'}</p>
                         
                     </div>
                     <div>
-                        <i class="fa-solid fa-arrow-right text-primary"></i>
+                       <button class="btn btn-primary" onclick="clickModalOpen('${categoryTitle._id}')" data-bs-toggle="modal" data-bs-target="#newsModal">see details <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -73,16 +75,19 @@ const displayItemFound = (categories, categoryName) => {
     })
 
 }
-const clickModalOpen = (categoryId) => {
+const clickModalOpen = (newsId) => {
     // console.log(categoryId);
-    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayModal(data.data))
+        .then(data => displayModal(data.data[0]))
         .catch(error => console.log(error))
 }
-const displayModal = (categoriesTitle) => {
-    console.log(categoriesTitle);
+const displayModal = (news) => {
+    console.log(news);
+    const callNewsModalTitle = document.getElementById('newsModalLabel');
+    callNewsModalTitle.innerText = `${news.title}`
+
 }
 
 
