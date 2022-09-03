@@ -1,5 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
+    background: rgb(226, 223, 223);
 }
 
 a:link {
@@ -12,8 +13,9 @@ a {
 }
 
 #items-found-container {
-    box-shadow: 5px 10px #f8f8f8;
+    box-shadow: 5px;
     height: 70px;
+    background-color: white;
 }
 
 #item-mouse-style {
