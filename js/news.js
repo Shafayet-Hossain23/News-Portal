@@ -62,7 +62,7 @@ const displayItemFound = (categories, categoryName) => {
                         
                     </div>
                     <div>
-                       <button class="btn btn-primary" onclick="clickModalOpen('${categoryTitle._id}')" data-bs-toggle="modal" data-bs-target="#newsModal">see details <i class="fa-solid fa-arrow-right"></i></button>
+                       <button class="btn btn-primary" onclick="clickModalOpen('${categoryTitle._id}')" data-bs-toggle="modal" data-bs-target="#newsModal">Details <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,14 @@ const clickModalOpen = (newsId) => {
 const displayModal = (news) => {
     console.log(news);
     const callNewsModalTitle = document.getElementById('newsModalLabel');
-    callNewsModalTitle.innerText = `${news.title}`
+    callNewsModalTitle.innerText = `${news.title.slice(0, 48)}...`;
+    const callModalBody = document.getElementById('news-modal-body');
+    callModalBody.innerHTML = `
+    <p>Published Date : ${news.author.published_date ? news.author.published_date.slice(0, 10) : 'No date found'}</p>
+    <p>Author Name : ${news.author.name ? news.author.name : 'No data found'}</p>
+    <p>views : ${news.total_view ? news.total_view : 'No data found'}</p>
+    <p>Ratings : ${news.rating.number} (${news.rating.badge})</p>
+    `
 
 }
 
