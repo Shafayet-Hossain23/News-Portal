@@ -9,7 +9,7 @@ const loadCategories = () => {
 const displayCategories = (categories) => {
     const callCategoriesContainer = document.getElementById('categories-container');
     categories.forEach(category => {
-        // console.log(category.category_name)
+        console.log(category.category_id, category.category_name)
         const createDiv = document.createElement('div');
         createDiv.classList.add('category-all', 'mx-auto')
         createDiv.innerHTML = `
@@ -39,7 +39,7 @@ const displayItemFound = (categories, categoryName) => {
         const createDiv = document.createElement('div');
         createDiv.classList.add('row', 'g-0', 'my-5', 'bg-white', 'rounded-4');
         createDiv.innerHTML = `
-        <div class="col-md-4">
+        <div class="col-md-4" onclick="">
             <img src="${categoryTitle.thumbnail_url}" class="img-fluid rounded p-2">
         </div>
         <div class="col-md-8">
@@ -52,11 +52,11 @@ const displayItemFound = (categories, categoryName) => {
                         <img style="width:40px;height:40px;" class="img-fluid rounded-circle" src="${categoryTitle.author.img}">
                         </div>
                         <div class="ms-2 mt-2"> 
-                            <h6>${categoryTitle.author.name}</h6>
+                            <h6>${categoryTitle.author.name ? categoryTitle.author.name : 'No data found'}</h6>
                         </div>
                     </div>
                     <div>
-                        <p><i class="fa-solid fa-eye">  ${categoryTitle.total_view}</i></p>
+                        <p class="fw-normal"> <i class="fa-solid fa-eye">  ${categoryTitle.total_view ? categoryTitle.total_view : 'No data found'}</i></p>
                         
                     </div>
                     <div>
@@ -79,7 +79,7 @@ const displayItemFound = (categories, categoryName) => {
 
 
 
-
+loadItemsFound("08", "All News")
 
 
 loadCategories();
