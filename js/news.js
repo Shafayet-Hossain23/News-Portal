@@ -13,7 +13,7 @@ const displayCategories = (categories) => {
         const createDiv = document.createElement('div');
         createDiv.classList.add('category-all', 'mx-auto')
         createDiv.innerHTML = `
-        <p id="item-mouse-style" onclick="loadItemsFound('${category.category_id}','${category.category_name}')">${category.category_name}</p>
+        <p id="item-mouse-style" onclick="loadItemsFound('${category.category_id}','${category.category_name}');spinLoader(true);">${category.category_name}</p>
         `;
         callCategoriesContainer.appendChild(createDiv);
     })
@@ -73,6 +73,7 @@ const displayItemFound = (categories, categoryName) => {
     `;
         callNewsContainer.appendChild(createDiv);
     })
+    spinLoader(false);
 
 }
 const clickModalOpen = (newsId) => {
