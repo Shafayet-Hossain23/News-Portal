@@ -9,7 +9,7 @@ const loadCategories = () => {
 const displayCategories = (categories) => {
     const callCategoriesContainer = document.getElementById('categories-container');
     categories.forEach(category => {
-        console.log(category.category_id, category.category_name)
+        // console.log(category.category_id, category.category_name)
         const createDiv = document.createElement('div');
         createDiv.classList.add('category-all', 'mx-auto')
         createDiv.innerHTML = `
@@ -20,7 +20,7 @@ const displayCategories = (categories) => {
 
 }
 const loadItemsFound = (categoryId, categoryName) => {
-    console.log(categoryId);
+    // console.log(categoryId);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     fetch(url)
         .then(res => res.json())
@@ -39,13 +39,13 @@ const displayItemFound = (categories, categoryName) => {
         const createDiv = document.createElement('div');
         createDiv.classList.add('row', 'g-0', 'my-5', 'bg-white', 'rounded-4');
         createDiv.innerHTML = `
-        <div class="col-md-4" onclick="">
-            <img src="${categoryTitle.thumbnail_url}" class="img-fluid rounded p-2">
+        <div class="col-md-4" onclick="clickModalOpen()">
+            <img style="width:350px;" src="${categoryTitle.thumbnail_url}" class="img-fluid rounded p-2">
         </div>
         <div class="col-md-8">
-            <div class="card-body me-5 pe-5 ">
-                <h4 class="card-title  mt-4 fw-bold">${categoryTitle.title}</h4>
-                <p style="text-align:justify;" class="card-text mt-3 pt-2">${categoryTitle.details.slice(0, 280)} ...</p>
+            <div class="card-body me-5 pe-5 mt-5 ">
+                <h4 class="card-title  mt-3 fw-bold">${categoryTitle.title}</h4>
+                <p style="text-align:justify;" class="card-text mt-3 pt-2">${categoryTitle.details.slice(0, 320)} ...</p>
                 <div class="mt-4 d-flex justify-content-between">
                     <div class="d-flex">
                         <div>
@@ -73,7 +73,17 @@ const displayItemFound = (categories, categoryName) => {
     })
 
 }
-
+const clickModalOpen = (categoryId) => {
+    // console.log(categoryId);
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayModal(data.data))
+        .catch(error => console.log(error))
+}
+const displayModal = (categoriesTitle) => {
+    console.log(categoriesTitle);
+}
 
 
 
