@@ -10,3 +10,17 @@ a:link {
 a {
     color: black;
 }
+
+#items-found-container {
+    box-shadow: 5px 10px #f8f8f8;
+    height: 70px;
+}
+
+#item-mouse-style {
+    cursor: pointer;
+}
+
+#item-mouse-style:hover {
+    color: blue;
+
+}
