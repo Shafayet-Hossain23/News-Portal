@@ -29,6 +29,10 @@ const loadItemsFound = (categoryId, categoryName) => {
 }
 const displayItemFound = (categories, categoryName) => {
     // console.log(categories);
+    // ..sorting element ...
+    categories.sort(function (a, b) {
+        return b.total_view - a.total_view;
+    });
     const itemsFoundContainer = document.getElementById('items-found-container');
     itemsFoundContainer.innerText = `${categories.length} items found  for category ${categoryName}
     `;
