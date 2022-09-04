@@ -37,12 +37,12 @@ const displayItemFound = (categories, categoryName) => {
     categories.forEach(categoryTitle => {
         // console.log(categoryTitle);
         const createDiv = document.createElement('div');
-        createDiv.classList.add('row', 'g-0', 'my-5', 'bg-white', 'rounded-4');
+        createDiv.classList.add('row', 'g-0', 'my-5', 'bg-white', 'rounded-4', 'portal-container');
         // createDiv.setAttribute("onclick", `clickModalOpen('${categoryTitle._id}');`);
         createDiv.innerHTML = `
         
-        <div class="col-md-4">
-            <img style="width:350px;" src="${categoryTitle.thumbnail_url}" class="img-fluid rounded p-2">
+        <div class="col-md-4 news-images">
+            <img style="width:350px;" src="${categoryTitle.thumbnail_url}" class="img-fluid rounded p-2 ">
         </div>
         <div class="col-md-8">
             <div class="card-body me-5 pe-5 mt-5 ">
@@ -58,7 +58,7 @@ const displayItemFound = (categories, categoryName) => {
                         </div>
                     </div>
                     <div>
-                        <p class="fw-normal"> <i class="fa-solid fa-eye"> </i>  ${categoryTitle.total_view ? categoryTitle.total_view : 'No data found'}</p>
+                        <p class="fw-normal total-view"> <i class="fa-solid fa-eye"> </i>  ${categoryTitle.total_view ? categoryTitle.total_view : 'No data found'}</p>
                         
                     </div>
                     <div>

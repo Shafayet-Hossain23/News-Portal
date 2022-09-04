@@ -26,3 +26,14 @@ a {
     color: blue;
 
 }
+
+@media only screen and (max-width: 576px) {
+    .portal-container {
+        padding-left: 50px;
+
+    }
+
+    .total-view {
+        display: none;
+    }
+}
